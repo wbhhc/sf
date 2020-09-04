@@ -1,0 +1,36 @@
+# sf 状态流
+
+是集成平台的一个组成部分，需要集成平台基础支撑平台的支持。
+
+
+
+#常用的命令行：
+mvn package
+mvn clean install
+mvn clean install -Dmaven.test.skip=true
+mvn install
+mvn test
+mvn clean package -Dmaven.test.skip=true
+mvn install -pl [module] -am -Dmaven.test.skip=true
+
+
+#上传到MAVEN
+mvn deploy -e -Dmaven.test.skip=true
+
+
+#打包发布
+cp web/target/user-platform-web.jar publish/user-platform-web.jar
+cp sso/target/user-platform-sso.jar publish/user-platform-sso.jar
+cp oauth-api/target/user-platform-oauth.jar publish/user-platform-oauth.jar
+
+
+#发布打包
+chmod 777 macbuild.sh
+./macbuild.sh [参数 如：prod]
+然后再用git还原修改的文件
+
+#忽略不提交的文件
+git update-index --assume-unchanged patient-web/src/main/resources/bootstrap.yml
+git update-index --assume-unchanged doctor-web/src/main/resources/bootstrap.yml
+git update-index --assume-unchanged admin-web/src/main/resources/bootstrap.yml
+git update-index --assume-unchanged api-gateway/src/main/resources/bootstrap.yml
