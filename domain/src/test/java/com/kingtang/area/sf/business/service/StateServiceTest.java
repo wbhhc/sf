@@ -58,7 +58,8 @@ public class StateServiceTest {
         String stateCode="1";
 
         when(stateRepository.get(appId,stateCode)).thenReturn(null);
-        stateService.enable(appId,stateCode);
+        String flag = stateService.enable(appId,stateCode);
+        assertEquals("1",flag);
     }
 
     @Test
