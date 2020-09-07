@@ -1,0 +1,5 @@
+将oracle jar包从本地装在到maven仓库
+mvn install:install-file -Dfile={Path/to/your/ojdbc6.jar} -DgroupId=oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar
+
+cd repository-ora
+mvn install:install-file -Dfile=src/main/resources/ojdbc6.jar -DgroupId=oracle -DartifactId=ojdbc6 -Dversion=11.2.0.3 -Dpackaging=jar
