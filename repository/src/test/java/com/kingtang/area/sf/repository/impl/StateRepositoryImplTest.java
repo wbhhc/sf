@@ -27,6 +27,7 @@ public class StateRepositoryImplTest {
 
     @Test
     public void findAll() {
+
     }
 
     @Test
@@ -38,12 +39,11 @@ public class StateRepositoryImplTest {
     }
 
     @Test
-    @Transactional
     public void add() {
         State state=new State();
-        state.setAppId("111");
-        state.setCode("1");
-        state.setName("1");
+        state.setAppId("ecc-ei");
+        state.setCode("5");
+        state.setName("审核未通过");
         stateRepository.add(state);
     }
 }
