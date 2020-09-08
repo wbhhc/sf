@@ -38,6 +38,7 @@ public class StateRepositoryImplTest {
     }
 
     @Test
+    @Transactional
     public void add() {
         State state=new State();
         state.setAppId("111");
