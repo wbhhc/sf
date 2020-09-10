@@ -12,7 +12,7 @@ import java.util.Date;
 public class StateSeries {
 
     @Id
-    private BigDecimal id;
+    private Long id;
 
     @NotEmpty(message = "模块编码不能为空")
     @Length(max = 50,message = "模块编码长度不能超过50")

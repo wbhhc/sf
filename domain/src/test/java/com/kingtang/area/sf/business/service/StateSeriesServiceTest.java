@@ -12,14 +12,7 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.math.BigDecimal;
-
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -74,7 +67,7 @@ public class StateSeriesServiceTest {
 
     @Test
     public void add() {
-        when(stateSeriesRepository.getNewId()).thenReturn(new BigDecimal(1));
+        when(stateSeriesRepository.getNewId()).thenReturn(1l);
         when(actionRepository.get(stateSeries.getAppId(),stateSeries.getActionCode())).thenReturn(action);
 
         Action a = stateSeriesService.write(stateSeries);

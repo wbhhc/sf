@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 public interface StateSeriesRepository {
     void add(StateSeries stateSeries);
 
-    BigDecimal getNewId();
+    Long getNewId();
 }
