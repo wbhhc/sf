@@ -34,4 +34,10 @@ public class BusinessProcessRepositoryImplTest {
         bp.setCurrState(s);
         businessProcessRepository.add(bp);
     }
+
+    @Test
+    public void get() {
+        BusinessProcess bp =businessProcessRepository.get("ecc-ei","123");
+        System.out.println(bp);
+    }
 }

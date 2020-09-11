@@ -27,8 +27,17 @@ public class BusinessProcessService {
         obj.setCurrState(state);
         //save
         businessProcessRepository.add(obj);
+    }
 
-        System.out.println("save");
+    /**
+     * 获取 业务 的当前状态
+     * @param appId
+     * @param businessCode
+     * @return
+     */
+    public State getCurrentState(String appId,String businessCode){
+        BusinessProcess bp=businessProcessRepository.get(appId,businessCode);
+        return bp.getCurrState();
     }
 
 }

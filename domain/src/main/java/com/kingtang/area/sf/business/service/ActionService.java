@@ -23,6 +23,12 @@ public class ActionService {
         actionRepository.add(action);
     }
 
+    /**
+     * 获取当前状态下可以做的行为
+     * @param appId
+     * @param sourceStateCode
+     * @return
+     */
     public List<Action> getBehaviorList(String appId, String sourceStateCode){
         return actionRepository.findByAppIdAndSourceStateCode(appId,sourceStateCode);
     }
