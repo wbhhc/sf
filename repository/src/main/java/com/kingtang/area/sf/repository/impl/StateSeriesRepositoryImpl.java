@@ -3,6 +3,7 @@ package com.kingtang.area.sf.repository.impl;
 import com.kingtang.area.sf.business.domain.StateSeries;
 import com.kingtang.area.sf.repository.StateSeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class StateSeriesRepositoryImpl implements StateSeriesRepository {
 
     @Autowired
+    @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
     String insertSql="INSERT INTO sf_state_series\n" +

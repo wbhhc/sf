@@ -4,6 +4,7 @@ import com.kingtang.area.sf.business.domain.BusinessProcess;
 import com.kingtang.area.sf.business.domain.State;
 import com.kingtang.area.sf.repository.BusinessProcessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +20,7 @@ public class BusinessProcessRepositoryImpl implements BusinessProcessRepository 
             " WHERE sf_business_process.APP_ID=? AND sf_business_process.BUSINESS_CODE=? ";
 
     @Autowired
+    @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
     @Override

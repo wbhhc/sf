@@ -3,6 +3,7 @@ package com.kingtang.area.sf.repository.impl;
 import com.kingtang.area.sf.business.domain.State;
 import com.kingtang.area.sf.repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -23,6 +24,7 @@ public class StateRepositoryImpl implements StateRepository {
     String selectByPrimarySql=selectAllSql+" AND sf_state.CODE=? ";
 
     @Autowired
+    @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
     @Override
