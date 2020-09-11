@@ -22,6 +22,11 @@ public class StateSeriesService {
     @Autowired
     ActionRepository actionRepository;
 
+    /**
+     * 变更业务过程状态
+     * @param stateSeries
+     * @return
+     */
     @Transactional
     public Action write(StateSeries stateSeries){
         ValidatorUtils.validateEntity(stateSeries);
