@@ -14,7 +14,9 @@ import java.util.List;
 @Repository
 public class BusinessProcessRepositoryImpl implements BusinessProcessRepository {
 
-    String insertSql="INSERT INTO sf_business_process ( APP_ID , BUSINESS_CODE , STATE_CODE ) VALUES (?,?,?)\n";
+    String insertSql="INSERT INTO sf_business_process ( APP_ID , BUSINESS_CODE , STATE_CODE ) VALUES (?,?,?)";
+
+    String updateSql="UPDATE sf_business_process SET STATE_CODE = ? WHERE APP_ID = ? AND BUSINESS_CODE = ?";
 
     String selectByPrimarySql="SELECT sf_business_process.APP_ID,sf_business_process.BUSINESS_CODE,sf_business_process.STATE_CODE FROM sf_business_process " +
             " WHERE sf_business_process.APP_ID=? AND sf_business_process.BUSINESS_CODE=? ";
@@ -47,5 +49,14 @@ public class BusinessProcessRepositoryImpl implements BusinessProcessRepository 
                     return temp;
                 });
         return bp;
+    }
+
+    @Override
+    public void update(BusinessProcess obj) {
+        List<Object> params = new ArrayList<Object>();
+        params.add(obj.getCurrState().getCode());
+        params.add(obj.getAppId());
+        params.add(obj.getBusinessCode());
+        jdbcTemplate.update(updateSql,params.toArray());
     }
 }

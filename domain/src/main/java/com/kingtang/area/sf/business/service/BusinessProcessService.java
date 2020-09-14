@@ -26,7 +26,13 @@ public class BusinessProcessService {
 
         obj.setCurrState(state);
         //save
-        businessProcessRepository.add(obj);
+        BusinessProcess bp=businessProcessRepository.get(event.getAppId(),event.getBusinessCode());
+        if(bp==null){
+            businessProcessRepository.add(obj);
+        }else{
+            businessProcessRepository.update(obj);
+        }
+
     }
 
     /**
