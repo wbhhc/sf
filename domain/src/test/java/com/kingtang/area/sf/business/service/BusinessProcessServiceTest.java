@@ -16,8 +16,7 @@ import org.springframework.context.ApplicationContext;
 
 import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doAnswer;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BusinessProcessServiceTest {
@@ -40,7 +39,17 @@ public class BusinessProcessServiceTest {
     }
 
     @Test
-    public void onRefresh() {
+    public void onRefresh_exists() {
+        BusinessProcess returnBp=new BusinessProcess();
+        State state=new State();
+        state.setCode(newStateCode);
+        state.setAppId(appId);
+        returnBp.setCurrState(state);
+        returnBp.setAppId(appId);
+        returnBp.setBusinessCode(businessCode);
+
+
+        when(businessProcessRepository.get(appId,businessCode)).thenReturn(returnBp);
 
         businessProcessService.onRefresh(
                 new BusinessProcessRefreshEvent(
@@ -50,6 +59,32 @@ public class BusinessProcessServiceTest {
                         newStateCode
                 )
         );
+        verify(businessProcessRepository).update(returnBp);
+
+    }
+
+    @Test
+    public void onRefresh_not_exists() {
+        BusinessProcess returnBp=new BusinessProcess();
+        State state=new State();
+        state.setCode(newStateCode);
+        state.setAppId(appId);
+        returnBp.setCurrState(state);
+        returnBp.setAppId(appId);
+        returnBp.setBusinessCode(businessCode);
+
+
+        when(businessProcessRepository.get(appId,businessCode)).thenReturn(null);
+
+        businessProcessService.onRefresh(
+                new BusinessProcessRefreshEvent(
+                        this,
+                        appId,
+                        businessCode,
+                        newStateCode
+                )
+        );
+        verify(businessProcessRepository).add(returnBp);
 
     }
 

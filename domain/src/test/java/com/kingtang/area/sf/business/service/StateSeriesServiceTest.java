@@ -66,7 +66,7 @@ public class StateSeriesServiceTest {
     }
 
     @Test
-    public void add() {
+    public void write() {
         when(stateSeriesRepository.getNewId()).thenReturn(1l);
         when(actionRepository.get(stateSeries.getAppId(),stateSeries.getActionCode())).thenReturn(action);
 
