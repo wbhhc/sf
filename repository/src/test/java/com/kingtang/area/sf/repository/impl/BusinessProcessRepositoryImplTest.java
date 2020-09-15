@@ -37,7 +37,7 @@ public class BusinessProcessRepositoryImplTest {
 
     @Test
     public void get() {
-        BusinessProcess bp =businessProcessRepository.get("ecc-ei","123");
+        BusinessProcess bp =businessProcessRepository.get("emergency-contro","26");
         System.out.println(bp);
     }
 }

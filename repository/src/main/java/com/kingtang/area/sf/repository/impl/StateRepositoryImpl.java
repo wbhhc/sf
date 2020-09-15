@@ -36,16 +36,20 @@ public class StateRepositoryImpl implements StateRepository {
 
     @Override
     public State get(String appId, String code) {
-        State state = jdbcTemplate.queryForObject(selectByPrimarySql, new Object[]{appId,code},
-            (rs,rowNum)->{
-                State temp=new State();
-                temp.setAppId(rs.getString("APP_ID"));
-                temp.setCode(rs.getString("CODE"));
-                temp.setName(rs.getString("NAME"));
-                temp.setFlag(rs.getString("FLAG"));
-                return temp;
-            });
-        return state;
+        try {
+            State state = jdbcTemplate.queryForObject(selectByPrimarySql, new Object[]{appId, code},
+                    (rs, rowNum) -> {
+                        State temp = new State();
+                        temp.setAppId(rs.getString("APP_ID"));
+                        temp.setCode(rs.getString("CODE"));
+                        temp.setName(rs.getString("NAME"));
+                        temp.setFlag(rs.getString("FLAG"));
+                        return temp;
+                    });
+            return state;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override

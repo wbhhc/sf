@@ -37,18 +37,24 @@ public class BusinessProcessRepositoryImpl implements BusinessProcessRepository 
 
     @Override
     public BusinessProcess get(String appId, String businessCode) {
-        BusinessProcess bp = jdbcTemplate.queryForObject(selectByPrimarySql, new Object[]{appId,businessCode},
-                (rs,rowNum)->{
-                    BusinessProcess temp=new BusinessProcess();
-                    temp.setAppId(rs.getString("APP_ID"));
-                    temp.setBusinessCode(rs.getString("BUSINESS_CODE"));
-                    State s=new State();
-                    s.setAppId(rs.getString("APP_ID"));
-                    s.setCode(rs.getString("STATE_CODE"));
-                    temp.setCurrState(s);
-                    return temp;
-                });
-        return bp;
+        try{
+            BusinessProcess bp = jdbcTemplate.queryForObject(selectByPrimarySql, new Object[]{appId,businessCode},
+                    (rs,rowNum)->{
+                        BusinessProcess temp=new BusinessProcess();
+                        temp.setAppId(rs.getString("APP_ID"));
+                        temp.setBusinessCode(rs.getString("BUSINESS_CODE"));
+                        State s=new State();
+                        s.setAppId(rs.getString("APP_ID"));
+                        s.setCode(rs.getString("STATE_CODE"));
+                        temp.setCurrState(s);
+                        return temp;
+                    });
+            return bp;
+        }
+        catch (Exception e){
+            return null;
+        }
+
     }
 
     @Override
