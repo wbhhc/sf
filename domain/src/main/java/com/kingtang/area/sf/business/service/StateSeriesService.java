@@ -47,7 +47,7 @@ public class StateSeriesService {
         publishEvent(new BusinessProcessRefreshEvent(this,
                 stateSeries.getAppId(),
                 stateSeries.getBusinessCode(),
-                stateSeries.getActionCode()
+                action.getTarget().getCode()
         ));
 
         return action;
