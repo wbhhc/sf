@@ -32,9 +32,13 @@ public class ActionRepositoryImpl implements ActionRepository {
 
     @Override
     public Action get(String appId, String code) {
-        Action obj = jdbcTemplate.queryForObject(selectByPrimarySql, new Object[]{appId,code},
-                new ActionRowMapper());
-        return obj;
+        try {
+            Action obj = jdbcTemplate.queryForObject(selectByPrimarySql, new Object[]{appId, code},
+                    new ActionRowMapper());
+            return obj;
+        }catch (Exception e){
+            return null;
+        }
     }
 
     @Override
