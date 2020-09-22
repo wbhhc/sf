@@ -15,7 +15,7 @@ public class StateService {
     StateRepository stateRepository;
 
     public List<State> getAllList(String appId){
-        return stateRepository.findAll(appId);
+        return stateRepository.findAll(appId,"1");
     }
 
     public void add(State state){

@@ -5,7 +5,7 @@ import com.kingtang.area.sf.business.domain.State;
 import java.util.List;
 
 public interface StateRepository {
-    List<State> findAll(String appId);
+    List<State> findAll(String appId,String flag);
 
     State get(String appId, String code);
 

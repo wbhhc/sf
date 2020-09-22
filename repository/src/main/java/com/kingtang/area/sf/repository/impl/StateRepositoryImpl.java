@@ -19,17 +19,18 @@ public class StateRepositoryImpl implements StateRepository {
     String updateSql="UPDATE sf_state SET NAME = ?, FLAG = ?\n" +
             " WHERE APP_ID = ? AND CODE = ? ";
 
-    String selectAllSql="SELECT sf_state.APP_ID,sf_state.CODE,sf_state.NAME,sf_state.FLAG FROM sf_state WHERE sf_state.APP_ID=? ";
+    String selectAllSql="SELECT sf_state.APP_ID,sf_state.CODE,sf_state.NAME,sf_state.FLAG FROM sf_state WHERE 1=1 ";
 
-    String selectByPrimarySql=selectAllSql+" AND sf_state.CODE=? ";
+    String selectByPrimarySql=selectAllSql+" AND sf_state.APP_ID=? AND sf_state.CODE=? ";
 
     @Autowired
     @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public List<State> findAll(String appId) {
-        List<State> list = jdbcTemplate.query(selectAllSql, new Object[]{appId},
+    public List<State> findAll(String appId,String flag) {
+        selectAllSql+=" AND sf_state.APP_ID=? AND sf_state.FLAG=? ";
+        List<State> list = jdbcTemplate.query(selectAllSql, new Object[]{appId,flag},
                 new BeanPropertyRowMapper<>(State.class));
         return list;
     }

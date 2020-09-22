@@ -25,7 +25,7 @@ public class StateRepositoryImplTest {
 
     @Test
     public void findAll() {
-        List<State> list= stateRepository.findAll("ecc-ei");
+        List<State> list= stateRepository.findAll("ecc-ei","1");
         assertNotEquals(0,list.size());
         System.out.println(list);
     }

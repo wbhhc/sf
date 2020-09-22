@@ -110,7 +110,7 @@ public class StateServiceTest {
     public void getAllList() {
         String appId="ecc-ei";
 
-        when(stateRepository.findAll(appId)).thenReturn(new ArrayList<State>());
+        when(stateRepository.findAll(appId,"1")).thenReturn(new ArrayList<State>());
 
         assertNotNull(stateService.getAllList(appId));
     }

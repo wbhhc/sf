@@ -21,7 +21,7 @@ public class ActionRepositoryImpl implements ActionRepository {
     String updateSql="UPDATE sf_action SET NAME = ?,SOURCE_CODE = ?,TARGET_CODE = ?,FLAG = ? WHERE APP_ID = ? AND CODE = ? ";
 
     String findByAppIdAndSourceStateCodeSql="SELECT sf_action.APP_ID,    sf_action.CODE,    sf_action.NAME,    sf_action.SOURCE_CODE,\n" +
-            "    sf_action.TARGET_CODE,    sf_action.FLAG FROM sf_action WHERE sf_action.APP_ID=? AND sf_action.SOURCE_CODE=? ";
+            "    sf_action.TARGET_CODE,    sf_action.FLAG FROM sf_action WHERE sf_action.APP_ID=? AND sf_action.SOURCE_CODE=? AND sf_action.FLAG='1'";
 
     String selectByPrimarySql=" SELECT sf_action.APP_ID,    sf_action.CODE,    sf_action.NAME,    sf_action.SOURCE_CODE,\n" +
             "    sf_action.TARGET_CODE,    sf_action.FLAG FROM sf_action WHERE sf_action.APP_ID=? AND sf_action.CODE=?  ";
