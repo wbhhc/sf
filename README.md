@@ -1,5 +1,11 @@
-# sf
-状态流框架
+# 状态流框架
+
+## helloworld
+
+在项目sf目录下，执行命令运行domain的单元测试
+
+    mvn install -pl domain -am 
+
 
 # 示例
 

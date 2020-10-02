@@ -54,7 +54,7 @@ public class ActionRepositoryImplTest {
 
     @Test
     public void findByAppIdAndSourceStateCode() {
-        List<Action> list = actionRepository.findByAppIdAndSourceStateCode("ecc-ei","#");
+            List<Action> list = actionRepository.findByAppIdAndSourceStateCode("emergency-control","#");
         assertNotEquals(0,list.size());
         System.out.println(list);
     }
