@@ -74,7 +74,7 @@ public class StateSeriesServiceTest {
         verify(stateSeriesRepository).add(stateSeries);
 
         assertNotNull(a.getTarget());
-        System.out.println(a.getTarget().toString());
+        System.out.println(a.getTarget());
 
     }
 }

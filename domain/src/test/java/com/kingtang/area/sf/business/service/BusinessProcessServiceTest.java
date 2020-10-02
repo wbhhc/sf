@@ -105,5 +105,6 @@ public class BusinessProcessServiceTest {
 
         State currState = businessProcessService.getCurrentState(appId,businessCode);
         assertEquals(obj.getCurrState().getCode(),currState.getCode());
+        System.out.println(currState.getCode());
     }
 }

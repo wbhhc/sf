@@ -23,3 +23,28 @@
     ecc-ei	    7	    撤回  	    3	    1
     ecc-ei	    8	    提交报告    	    5	    3
 
+## 获取当前状态
+
+入参：模块Id、业务唯一编码
+返回：当前状态
+
+    State currState = businessProcessService.getCurrentState("ecc-ei",“111|1”);
+
+## 执行一个行为
+
+入参：模块Id、业务唯一编码、行为编码
+返回：行为对象，包含了执行该行为后目标状态
+    
+    stateSeries=new StateSeries();
+            stateSeries.setBusinessCode("1111111155|123");
+            stateSeries.setAppId(appId);
+            stateSeries.setActionCode("1");
+    Action a = stateSeriesService.write(stateSeries);
+    System.out.println(a.getTarget());
+    
+## 获取该状态下所有的行为（操作权限）
+
+入参：模块Id、状态编码
+返回：行为列表
+
+    List<Action> list = actionService.getBehaviorList(appId,"#");
