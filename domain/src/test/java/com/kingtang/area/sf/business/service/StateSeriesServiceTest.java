@@ -30,6 +30,8 @@ public class StateSeriesServiceTest {
     ActionRepository actionRepository;
 
     String appId="ecc-ei";
+    String businessCode = "1111111155|123";
+    String actionCode = "1";
 
     StateSeries stateSeries;
 
@@ -39,9 +41,9 @@ public class StateSeriesServiceTest {
     @Before
     public void setUp() throws Exception {
         stateSeries=new StateSeries();
-        stateSeries.setBusinessCode("1111111155|123");
+        stateSeries.setBusinessCode(businessCode);
         stateSeries.setAppId(appId);
-        stateSeries.setActionCode("1");
+        stateSeries.setActionCode(actionCode);
 
 
         //返回填充的action
@@ -67,11 +69,12 @@ public class StateSeriesServiceTest {
 
     @Test
     public void write() {
-        when(stateSeriesRepository.getNewId()).thenReturn(1l);
+        Long newId=1l;
+        when(stateSeriesRepository.getNewId()).thenReturn(newId);
         when(actionRepository.get(stateSeries.getAppId(),stateSeries.getActionCode())).thenReturn(action);
-
-        Action a = stateSeriesService.write(stateSeries);
-        verify(stateSeriesRepository).add(stateSeries);
+        stateSeries.setId(newId);
+        Action a = stateSeriesService.write(appId,businessCode,actionCode);
+//        verify(stateSeriesRepository).add(stateSeries);
 
         assertNotNull(a.getTarget());
         System.out.println(a.getTarget());

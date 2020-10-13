@@ -22,13 +22,27 @@ public class StateSeriesService {
     @Autowired
     ActionRepository actionRepository;
 
+
+    public Action verifyActionAndFill(Action action){
+        Action obj = actionRepository.get(action.getAppId(),action.getCode());
+        if(obj==null)
+            throw new RuntimeException("验证动作失败！动作不存在:"+action.toString());
+        return obj;
+    }
+
     /**
      * 变更业务过程状态
-     * @param stateSeries
      * @return
      */
     @Transactional
-    public Action write(StateSeries stateSeries){
+    public Action write(String appId, String businessCode, String actionCode) {
+
+        StateSeries stateSeries=new StateSeries();
+
+        stateSeries.setBusinessCode(businessCode);
+        stateSeries.setAppId(appId);
+        stateSeries.setActionCode(actionCode);
+
         ValidatorUtils.validateEntity(stateSeries);
 
 
@@ -52,12 +66,4 @@ public class StateSeriesService {
 
         return action;
     }
-
-    public Action verifyActionAndFill(Action action){
-        Action obj = actionRepository.get(action.getAppId(),action.getCode());
-        if(obj==null)
-            throw new RuntimeException("验证动作失败！动作不存在:"+action.toString());
-        return obj;
-    }
-
 }
