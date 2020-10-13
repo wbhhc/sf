@@ -43,6 +43,7 @@ public class BusinessProcessService {
      */
     public State getCurrentState(String appId,String businessCode){
         BusinessProcess bp=businessProcessRepository.get(appId,businessCode);
+        if(bp==null)return null;
         return bp.getCurrState();
     }
 

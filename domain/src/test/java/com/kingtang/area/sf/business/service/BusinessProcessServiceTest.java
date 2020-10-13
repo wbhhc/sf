@@ -107,4 +107,23 @@ public class BusinessProcessServiceTest {
         assertEquals(obj.getCurrState().getCode(),currState.getCode());
         System.out.println(currState.getCode());
     }
+
+    @Test
+    public void getCurrentState_not_exists() {
+        BusinessProcess obj=new BusinessProcess();
+        obj.setAppId(appId);
+        obj.setBusinessCode(businessCode);
+
+        State state=new State();
+        state.setAppId(appId);
+        state.setCode("1");
+
+        obj.setCurrState(state);
+
+        when(businessProcessRepository.get(appId,businessCode)).thenReturn(null);
+
+        State currState = businessProcessService.getCurrentState(appId,businessCode);
+        assertEquals(null,currState);
+        System.out.println(currState);
+    }
 }
