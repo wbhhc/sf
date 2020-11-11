@@ -25,7 +25,7 @@ public class BusinessProcessRepositoryImplTest {
     public void add() {
         BusinessProcess bp=new BusinessProcess();
         bp.setAppId("ecc-ei");
-        bp.setBusinessCode("123");
+        bp.setBusinessCode("123|1");
 
         State s=new State();
         s.setAppId(bp.getAppId());

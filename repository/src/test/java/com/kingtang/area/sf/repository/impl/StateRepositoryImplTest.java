@@ -50,8 +50,8 @@ public class StateRepositoryImplTest {
     public void add() {
         State state=new State();
         state.setAppId("ecc-ei");
-        state.setCode("#");
-        state.setName("#");
+        state.setCode("##");
+        state.setName("##");
         stateRepository.add(state);
     }
 }

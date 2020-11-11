@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: sf-web
+
+#配置中心地址  各种改成false可单独运行
+  cloud:
+    config:
+      fail-fast: false
+      discovery:
+        enabled: false
+        service-id: config-server
+      enabled: false
+    service-registry:
+      auto-registration:
+        enabled: false
+    bus:
+      trace:
+        enabled: false
+      enabled: false
+
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+#management.security.enabled=false
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+ribbon:
+  eureka:
+    enabled: false

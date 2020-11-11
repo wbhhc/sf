@@ -34,7 +34,7 @@ public class ActionRepositoryImplTest {
     public void add() {
         Action action=new Action();
         action.setAppId("ecc-ei");
-        action.setCode("8");
+        action.setCode("9");
 
         State ss=new State();
         action.setSource(ss);
