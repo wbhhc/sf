@@ -29,8 +29,8 @@ public class StateRepositoryImpl implements StateRepository {
 
     @Override
     public List<State> findAll(String appId,String flag) {
-        selectAllSql+=" AND sf_state.APP_ID=? AND sf_state.FLAG=? ";
-        List<State> list = jdbcTemplate.query(selectAllSql, new Object[]{appId,flag},
+        String sql=selectAllSql+" AND sf_state.APP_ID=? AND sf_state.FLAG=? ";
+        List<State> list = jdbcTemplate.query(sql, new Object[]{appId,flag},
                 new BeanPropertyRowMapper<>(State.class));
         return list;
     }

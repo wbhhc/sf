@@ -30,4 +30,18 @@ public class Action {
     private State target;
 
     private String flag="1";
+
+    public void initSource(String sourceStateCode){
+        State source=new State();
+        source.setAppId(this.appId);
+        source.setCode(sourceStateCode);
+        this.source=source;
+    }
+
+    public void initTarget(String targetStateCode){
+        State target=new State();
+        target.setAppId(this.appId);
+        target.setCode(targetStateCode);
+        this.target=target;
+    }
 }
