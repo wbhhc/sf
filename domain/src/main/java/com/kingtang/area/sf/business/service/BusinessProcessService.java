@@ -4,6 +4,7 @@ import com.kingtang.area.sf.business.domain.BusinessProcess;
 import com.kingtang.area.sf.business.domain.State;
 import com.kingtang.area.sf.business.events.BusinessProcessRefreshEvent;
 import com.kingtang.area.sf.repository.BusinessProcessRepository;
+import com.kingtang.area.sf.repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,9 @@ public class BusinessProcessService {
 
     @Autowired
     BusinessProcessRepository businessProcessRepository;
+
+    @Autowired
+    StateRepository stateRepository;
 
     @EventListener
     public void onRefresh(BusinessProcessRefreshEvent event){
@@ -44,7 +48,8 @@ public class BusinessProcessService {
     public State getCurrentState(String appId,String businessCode){
         BusinessProcess bp=businessProcessRepository.get(appId,businessCode);
         if(bp==null)return null;
-        return bp.getCurrState();
+        State state =stateRepository.get(bp.getCurrState().getAppId(),bp.getCurrState().getCode());
+        return state;
     }
 
 }
