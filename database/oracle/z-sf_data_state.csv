@@ -1,0 +1,14 @@
+APP_ID,CODE,NAME,FLAG
+ecc-ei,#,开始,1
+ecc-ei,1,待流调,1
+ecc-ei,2,已流调,1
+ecc-ei,3,待审核,1
+ecc-ei,4,审核通过,1
+ecc-ei,5,审核未通过,1
+emergency-control,#,开始,1
+emergency-control,1,待流调,1
+emergency-control,2,已流调,1
+emergency-control,3,待内部审核,1
+emergency-control,4,待市级确认,1
+emergency-control,5,审核未通过,1
+emergency-control,6,流调完成,1
