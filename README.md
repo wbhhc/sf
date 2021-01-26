@@ -4,9 +4,11 @@
 
 - database目录，找到相应的数据库文件目录，根据脚本创建数据库和导入数据。
 
-- 在项目sf目录下，执行命令运行domain的单元测试
+- 修改数据源地址：找到application.properties和application-dev.yml文件，修改数据库连接。
 
-    mvn install -pl domain -am 
+- 在项目目录下
+
+    mvn clean install -Dmaven.test.skip=true
 
 - 进入web目录
 
