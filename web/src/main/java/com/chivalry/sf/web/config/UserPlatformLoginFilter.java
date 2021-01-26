@@ -1,9 +1,9 @@
 package com.chivalry.sf.web.config;
 
 import com.chivalry.sf.web.clinet.SsoClient;
-import com.kingtang.area.userplatform.business.domain.SsoToken;
-import com.kingtang.area.userplatform.business.domain.SysMenu;
-import com.kingtang.area.userplatform.business.domain.SysUser;
+import com.chivalry.portal.business.domain.SsoToken;
+import com.chivalry.portal.business.domain.SysMenu;
+import com.chivalry.portal.business.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;

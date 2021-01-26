@@ -1,6 +1,6 @@
 package com.chivalry.sf.web.dto;
 
-import com.kingtang.area.sf.business.domain.State;
+import com.chivalry.sf.business.domain.State;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 

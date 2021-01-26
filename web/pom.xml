@@ -106,19 +106,19 @@
         </dependency>
 
         <dependency>
-            <groupId>com.kingtang.area</groupId>
+            <groupId>com.chivalry</groupId>
             <artifactId>sf-domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>com.kingtang.area</groupId>
+            <groupId>com.chivalry</groupId>
             <artifactId>sf-repository</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
-            <groupId>com.kingtang.area</groupId>
+            <groupId>com.chivalry</groupId>
             <artifactId>up-domain</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

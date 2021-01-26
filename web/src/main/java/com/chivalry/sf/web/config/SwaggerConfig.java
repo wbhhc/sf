@@ -27,7 +27,7 @@ public class SwaggerConfig {
                 .pathMapping("/")
                 .select() // 选择那些路径和api会生成document
                 .apis(basePackage(
-                        "com.kingtang.area.sf.web.restController"))// 对所有api进行监控
+                        "com.chivalry.sf.web.restController"))// 对所有api进行监控
                 //不显示错误的接口地址
                 .paths(Predicates.not(PathSelectors.regex("/error.*")))//错误路径不监控
                 .paths(PathSelectors.regex("/.*"))// 对根下所有路径进行监控

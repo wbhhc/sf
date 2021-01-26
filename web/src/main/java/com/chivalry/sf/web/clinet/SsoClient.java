@@ -1,8 +1,8 @@
 package com.chivalry.sf.web.clinet;
 
-import com.kingtang.area.userplatform.business.domain.SysUser;
-import com.kingtang.area.userplatform.business.domain.SsoToken;
-import com.kingtang.area.userplatform.business.domain.SysRole;
+import com.chivalry.portal.business.domain.SysUser;
+import com.chivalry.portal.business.domain.SsoToken;
+import com.chivalry.portal.business.domain.SysRole;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;

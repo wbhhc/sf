@@ -1,9 +1,8 @@
 package com.chivalry.sf.web.config;
 
-import com.kingtang.area.sf.core.SfJdbcTemplateFactory;
-import com.kingtang.area.sf.core.SfScannerConfig;
+import com.chivalry.sf.core.SfJdbcTemplateFactory;
+import com.chivalry.sf.core.SfScannerConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.*;

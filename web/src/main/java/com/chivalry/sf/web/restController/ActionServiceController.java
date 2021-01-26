@@ -1,8 +1,8 @@
 package com.chivalry.sf.web.restController;
 
-import com.kingtang.area.sf.business.domain.Action;
-import com.kingtang.area.sf.business.service.ActionService;
-import com.kingtang.area.sf.business.service.StateService;
+import com.chivalry.sf.business.domain.Action;
+import com.chivalry.sf.business.service.ActionService;
+import com.chivalry.sf.business.service.StateService;
 import com.chivalry.sf.web.dto.ActionDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

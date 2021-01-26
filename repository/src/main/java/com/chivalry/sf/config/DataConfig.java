@@ -23,10 +23,6 @@ public class DataConfig implements TransactionManagementConfigurer {
     @Qualifier("sfDataSource")
     private DataSource sfDataSource;
 
-    @Autowired
-    @Qualifier("jdbcDataSource")
-    private DataSource dataSource;
-
     // 数据源1
     @Bean
     @Primary
