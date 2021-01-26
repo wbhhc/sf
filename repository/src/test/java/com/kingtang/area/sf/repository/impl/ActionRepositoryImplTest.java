@@ -4,10 +4,13 @@ import com.kingtang.area.sf.Application;
 import com.kingtang.area.sf.business.domain.Action;
 import com.kingtang.area.sf.business.domain.State;
 import com.kingtang.area.sf.repository.ActionRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +25,10 @@ public class ActionRepositoryImplTest {
 
     @Autowired
     ActionRepository actionRepository;
+
+    @Before
+    public void setUp() throws Exception {
+    }
 
     @Test
     public void get() {
@@ -66,4 +73,6 @@ public class ActionRepositoryImplTest {
         action.setName("开始流调");
         actionRepository.update(action);
     }
+
+
 }

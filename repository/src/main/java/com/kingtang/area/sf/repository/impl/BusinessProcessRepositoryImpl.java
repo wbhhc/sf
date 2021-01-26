@@ -2,9 +2,8 @@ package com.kingtang.area.sf.repository.impl;
 
 import com.kingtang.area.sf.business.domain.BusinessProcess;
 import com.kingtang.area.sf.business.domain.State;
+import com.kingtang.area.sf.core.SfJdbcTemplateFactory;
 import com.kingtang.area.sf.repository.BusinessProcessRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -21,9 +20,11 @@ public class BusinessProcessRepositoryImpl implements BusinessProcessRepository 
     String selectByPrimarySql="SELECT sf_business_process.APP_ID,sf_business_process.BUSINESS_CODE,sf_business_process.STATE_CODE FROM sf_business_process " +
             " WHERE sf_business_process.APP_ID=? AND sf_business_process.BUSINESS_CODE=? ";
 
-    @Autowired
-    @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
+
+    public BusinessProcessRepositoryImpl(SfJdbcTemplateFactory sfJdbcTemplateFactory) {
+        this.jdbcTemplate = sfJdbcTemplateFactory.Create();
+    }
 
     @Override
     public void add(BusinessProcess obj) {

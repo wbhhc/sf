@@ -1,9 +1,8 @@
 package com.kingtang.area.sf.repository.impl;
 
 import com.kingtang.area.sf.business.domain.StateSeries;
+import com.kingtang.area.sf.core.SfJdbcTemplateFactory;
 import com.kingtang.area.sf.repository.StateSeriesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,14 +12,15 @@ import java.util.List;
 @Repository
 public class StateSeriesRepositoryImpl implements StateSeriesRepository {
 
-    @Autowired
-    @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
+
+    public StateSeriesRepositoryImpl(SfJdbcTemplateFactory sfJdbcTemplateFactory) {
+        this.jdbcTemplate = sfJdbcTemplateFactory.Create();
+    }
 
     String insertSql="INSERT INTO sf_state_series\n" +
             "(APP_ID,BUSINESS_CODE,ACTION_CODE,CREATE_TIME,CREATE_USER_CODE,CREATE_USER_NAME,REMARK)\n" +
             "VALUES (?,?,?,?,?,?,?)";
-
 
     @Override
     public void add(StateSeries stateSeries) {

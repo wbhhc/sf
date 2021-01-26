@@ -66,11 +66,11 @@
 
     </repositories>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>nexus</id>
-            <url>http://10.1.51.86:18081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+<!--    <distributionManagement>-->
+<!--        <snapshotRepository>-->
+<!--            <id>nexus</id>-->
+<!--            <url>http://10.1.51.86:18081/nexus/content/repositories/snapshots</url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
 
 </project>

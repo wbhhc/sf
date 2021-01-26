@@ -1,12 +1,9 @@
 package com.kingtang.area.sf.repository.impl;
 
 import com.kingtang.area.sf.business.domain.Action;
-import com.kingtang.area.sf.business.domain.State;
+import com.kingtang.area.sf.core.SfJdbcTemplateFactory;
 import com.kingtang.area.sf.repository.ActionRepository;
 import com.kingtang.area.sf.repository.rowmap.ActionRowMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,9 +23,11 @@ public class ActionRepositoryImpl implements ActionRepository {
     String selectByPrimarySql=" SELECT sf_action.APP_ID,    sf_action.CODE,    sf_action.NAME,    sf_action.SOURCE_CODE,\n" +
             "    sf_action.TARGET_CODE,    sf_action.FLAG FROM sf_action WHERE sf_action.APP_ID=? AND sf_action.CODE=?  ";
 
-    @Autowired
-    @Qualifier("sfJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
+
+    public ActionRepositoryImpl(SfJdbcTemplateFactory sfJdbcTemplateFactory) {
+        this.jdbcTemplate = sfJdbcTemplateFactory.Create();
+    }
 
     @Override
     public Action get(String appId, String code) {

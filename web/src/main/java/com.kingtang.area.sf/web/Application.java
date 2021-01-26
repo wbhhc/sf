@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * 为了在主程序配置datasource，禁用自动配置datasource，
@@ -16,9 +17,9 @@ import org.springframework.context.annotation.ComponentScan;
         DataSourceAutoConfiguration.class,
 })
 @EnableFeignClients
+//@ImportResource(locations={"classpath:application-bean.xml"})
 @ComponentScan(basePackages = {
-        "com.kingtang.area.sf.repository.impl",
-        "com.kingtang.area.sf.business.service",
+//        "com.kingtang.area.sf.config",
         "com.kingtang.area.sf.web.*"
 })
 public class Application {
