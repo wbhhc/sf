@@ -19,7 +19,7 @@ spring:
 sf:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://10.1.51.215:3306/basic?useUnicode=true&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://localhost:3306/portal?useUnicode=true&characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
     password: 123456
     validation-query: select 1 from dual #指定获取连接时连接校验的sql查询语句
