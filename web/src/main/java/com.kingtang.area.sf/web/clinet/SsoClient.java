@@ -1,6 +1,6 @@
 package com.kingtang.area.sf.web.clinet;
 
-import com.kingtang.area.userplatform.business.domain.PubEmp;
+import com.kingtang.area.userplatform.business.domain.SysUser;
 import com.kingtang.area.userplatform.business.domain.SsoToken;
 import com.kingtang.area.userplatform.business.domain.SysRole;
 import org.springframework.cache.annotation.Cacheable;
@@ -26,7 +26,7 @@ public interface SsoClient {
      * @return
      */
     @RequestMapping(value="/sso/user/allMenus/{username}",method = RequestMethod.GET)
-    PubEmp getUserAllMenus(@PathVariable(value = "username") String username);
+    SysUser getUserAllMenus(@PathVariable(value = "username") String username);
 
     /**获取登录人员菜单
      * @param username
@@ -34,7 +34,7 @@ public interface SsoClient {
      * @return
      */
     @RequestMapping(value="/sso/user/menus/{username}/{appId}",method = RequestMethod.GET)
-    PubEmp getUserMenus(@PathVariable(value = "username") String username,
+    SysUser getUserMenus(@PathVariable(value = "username") String username,
                         @PathVariable(value = "appId") String appId
     );
 
@@ -44,21 +44,21 @@ public interface SsoClient {
      * @return
      */
     @RequestMapping(value="/sso/user/account/{username}",method = RequestMethod.GET)
-    PubEmp getUserInfo(@RequestParam(value = "username") String username);
+    SysUser getUserInfo(@RequestParam(value = "username") String username);
 
     /**账号注册
      * @param user
      * @return
      */
     @RequestMapping(value="/sso/user/account",method = RequestMethod.POST)
-    PubEmp addUser(@RequestBody PubEmp user);
+    SysUser addUser(@RequestBody SysUser user);
 
     /**账号修改
      * @param user
      * @return
      */
     @RequestMapping(value="/sso/user/account",method = RequestMethod.PUT)
-    PubEmp editUser(@RequestBody PubEmp user);
+    SysUser editUser(@RequestBody SysUser user);
 
     /**账号添加角色
      * @param code
@@ -73,7 +73,7 @@ public interface SsoClient {
      * @return
      */
     @RequestMapping(value="/sso/user/roles/{code}",method = RequestMethod.GET)
-    PubEmp getUserRoles(@RequestParam("code") String code);
+    SysUser getUserRoles(@RequestParam("code") String code);
 
 
     /**获取角色（用于判断角色是否存在）

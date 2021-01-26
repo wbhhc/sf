@@ -1,9 +1,9 @@
 package com.kingtang.area.sf.web.config;
 
 import com.kingtang.area.sf.web.clinet.SsoClient;
-import com.kingtang.area.userplatform.business.domain.PubEmp;
 import com.kingtang.area.userplatform.business.domain.SsoToken;
 import com.kingtang.area.userplatform.business.domain.SysMenu;
+import com.kingtang.area.userplatform.business.domain.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -96,7 +96,7 @@ public class UserPlatformLoginFilter implements Filter {
         request.getSession().setAttribute(usernameParameter, username);
         request.getSession().setAttribute(tokenParameter,token);
         //保存账号信息
-        PubEmp pubEmp = ssoClient.getUserInfo(username);
+        SysUser pubEmp = ssoClient.getUserInfo(username);
         if(pubEmp==null) throw new RuntimeException("账号不存在！");
         request.getSession().setAttribute(idParameter, pubEmp.getId());
         request.getSession().setAttribute(nameParameter, pubEmp.getName());
@@ -107,7 +107,7 @@ public class UserPlatformLoginFilter implements Filter {
     }
 
     private void cacheUserMenus(String username,HttpServletRequest request){
-        PubEmp pubEmp = ssoClient.getUserAllMenus(username);
+        SysUser pubEmp = ssoClient.getUserAllMenus(username);
         request.getSession().setAttribute(menusParameter, pubEmp.getMenus());
 
         if(pubEmp!=null){
