@@ -53,24 +53,44 @@
 
 ## 引入数据源
 
-    @Autowired
-    @Qualifier("sfDataSource")
-    private DataSource sfDataSource;
+- 导入SfScannerConfig类，它将引入sf所用到的类。
 
-    @Bean
-    @ConfigurationProperties(prefix = "sf.datasource")
-    public DataSourceProperties sfDataSourceProperties() {
-        return new DataSourceProperties();
-    }
+- 指定sf的数据源：new SfJdbcTemplateFactory(new JdbcTemplate(dataSource))
 
-    @Bean
-    JdbcTemplate sfJdbcTemplate(@Qualifier("sfDataSource") DataSource sfDataSource) {
-        return new JdbcTemplate(sfDataSource);
-    }
+
+    @Configuration
+    @Import(SfScannerConfig.class)
+    public class DataConfig implements TransactionManagementConfigurer {
     
-## 注意事项
-
-这里为dataSource和jdbcTemplate使用了别名，是为了防止和你当前项目的数据源冲突，而sf本身使用的是“sfJdbcTemplate”别名为jdbcTemplate，请使用这个别名。
+        // 数据源
+        @Autowired
+        private DataSource dataSource;
+    
+        @Bean
+        @Primary
+        @ConfigurationProperties(prefix = "sf.datasource")
+        public DataSourceProperties dataSourceProperties() {
+            return new DataSourceProperties();
+        }
+    
+        @Bean
+        @Primary
+        @ConfigurationProperties(prefix = "sf.datasource")
+        public DataSource dataSource(){
+            return dataSourceProperties().initializeDataSourceBuilder().build();
+        }
+    
+        //指定sf数据源
+        @Bean
+        SfJdbcTemplateFactory sfJdbcTemplateFactory(){
+            return new SfJdbcTemplateFactory(new JdbcTemplate(dataSource));
+        }
+    
+        @Override
+        public PlatformTransactionManager annotationDrivenTransactionManager() {
+            return new DataSourceTransactionManager(dataSource);
+        }
+    }
 
 ## 获取当前状态
 
