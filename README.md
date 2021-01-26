@@ -53,6 +53,8 @@
         username: [username]
         password: [pwd]
 
+# 在你的项目里引用
+
 ## 引入数据源
 
 - 导入SfScannerConfig类，它将引入sf所用到的类。
