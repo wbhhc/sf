@@ -16,45 +16,37 @@ import javax.sql.DataSource;
 
 
 @Configuration
-//@ComponentScan(basePackages = {
-//        "com.kingtang.area.sf.business.service"
-//})
 @Import(SfScannerConfig.class)
 public class DataConfig implements TransactionManagementConfigurer {
 
     // 数据源
     @Autowired
-    @Qualifier("sfDataSource")
-    private DataSource sfDataSource;
+    private DataSource dataSource;
 
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "sf.datasource")
-    public DataSourceProperties sfDataSourceProperties() {
+    public DataSourceProperties dataSourceProperties() {
         return new DataSourceProperties();
     }
 
     @Bean
     @Primary
     @ConfigurationProperties(prefix = "sf.datasource")
-    public DataSource sfDataSource(){
-        return sfDataSourceProperties().initializeDataSourceBuilder().build();
+    public DataSource dataSource(){
+        return dataSourceProperties().initializeDataSourceBuilder().build();
     }
 
-//    @Bean
-//    JdbcTemplate sfJdbcTemplate(@Qualifier("sfDataSource") DataSource sfDataSource) {
-//        return new JdbcTemplate(sfDataSource);
-//    }
 
     //指定sf数据源
     @Bean
     SfJdbcTemplateFactory sfJdbcTemplateFactory(){
-        return new SfJdbcTemplateFactory(new JdbcTemplate(sfDataSource));
+        return new SfJdbcTemplateFactory(new JdbcTemplate(dataSource));
     }
 
 
     @Override
     public PlatformTransactionManager annotationDrivenTransactionManager() {
-        return new DataSourceTransactionManager(sfDataSource);
+        return new DataSourceTransactionManager(dataSource);
     }
 }
