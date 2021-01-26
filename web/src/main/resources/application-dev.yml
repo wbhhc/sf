@@ -32,6 +32,6 @@ sf:
 logging:
   level:
     root: INFO
-    com.kingtang.area.repository.oracle.mapper: INFO
+    com.chivalry.repository.mapper: INFO
   path: /logs/sf/
 
